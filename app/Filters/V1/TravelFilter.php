@@ -10,6 +10,8 @@ class TravelFilter extends ApiFilter
 {
     protected $safeParms = [
         'title' => ['eq'],
+        'description' => ['eq'],
+        'image' => ['eq'],
     ];
 
     protected $columnMap = [

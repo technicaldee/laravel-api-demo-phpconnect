@@ -31,7 +31,7 @@ class TravelController extends Controller
         //     $customers = $customers->with('invoices');
         // }
 
-        return new TravelCollection($travel->paginate()->appends($request->query()));
+        return $travel->paginate()->appends($request->query());
     }
 
     /**
@@ -51,15 +51,10 @@ class TravelController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show(Travel $customer)
+    public function show(Travel $travel)
     {
-        $includeInvoices = request()->query('includeInvoices');
 
-        if ($includeInvoices) {
-            return new TravelResource($customer->loadMissing('invoices'));
-        }
-
-        return new TravelResource($customer);
+        return $travel;
     }
 
     /**
